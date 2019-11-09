@@ -27,6 +27,15 @@
     NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.
  */
 
+let cache = {}
+
+function memo(params, result){
+   if (cache[params] in cache) {
+      if (cache[params].includes(result)) {
+         
+      }
+   }
+}
 
 var sum_pairs=function(ints, s){
    var arr = [];
@@ -39,12 +48,13 @@ var sum_pairs=function(ints, s){
       }
    }
 
+
    if (arr.length === 0) return undefined;
    if (arr.length === 1) return arr[0];
    else
       var kecil = arr[0];
       for (let i = 1; i < arr.length; i++) {
-         if (Math.abs(arr[i][1] - s) < Math.abs(kecil[1] - s)) kecil = arr[i];
+         if (arr[i][0] < kecil[0]) kecil = arr[i];
       }
       return kecil;
 }
@@ -68,3 +78,4 @@ console.log(sum_pairs(l5, 10));
 console.log(sum_pairs(l6, 8));
 console.log(sum_pairs(l7, 0));
 console.log(sum_pairs(l8, 10));
+console.log(memo(sum_pairs(l8, 10)));
